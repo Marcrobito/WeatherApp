@@ -21,14 +21,12 @@ class WeatherAdapter(private val list: List<WeatherReading>, private val listene
     override fun getItemCount() = list.size
 
     inner class VH(private val binding: ItemWeatherBinding, private val listener:WeatherListListener):RecyclerView.ViewHolder(binding.root){
-        fun bind(reading: WeatherReading){
-            with(binding){
-                temperature.text = "Temp: ${reading.main.temp}"
-                weather.text = reading.weather[0].main
-                Glide.with(icon).load("https://openweathermap.org/img/w/${reading.weather[0].icon}.png").into(icon)
-                root.setOnClickListener {
-                    listener.onWeatherSelected(reading.timestamp)
-                }
+        fun bind(reading: WeatherReading) = with(binding){
+            temperature.text = "Temp: ${reading.main.temp}"
+            weather.text = reading.weather[0].main
+            Glide.with(icon).load("https://openweathermap.org/img/w/${reading.weather[0].icon}.png").into(icon)
+            root.setOnClickListener {
+                listener.onWeatherSelected(reading.timestamp)
             }
         }
     }

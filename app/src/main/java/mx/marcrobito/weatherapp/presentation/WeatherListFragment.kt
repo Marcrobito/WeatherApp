@@ -38,8 +38,6 @@ class WeatherListFragment : Fragment(), WeatherListListener {
                         adapter = WeatherAdapter(it.data, this@WeatherListFragment)
                     }
             }
-
-
             return root
         }
 
